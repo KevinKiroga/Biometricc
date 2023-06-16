@@ -74,7 +74,7 @@ class AuthController extends Controller
 
         $result = json_decode($response->getBody(), true);
 
-        if ($result['status'] !== 'valid') {
+        if (!isset($result['status']) || $result['status'] !== 'valid') {
             // El correo electrónico no es válido o no existe
             return redirect()->back()->withErrors(['email' => 'El correo electrónico no es válido o ya está registrado']);
         }

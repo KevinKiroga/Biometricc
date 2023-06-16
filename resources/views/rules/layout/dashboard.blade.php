@@ -8,7 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>@yield('title')</title>
 
-    @yield('css')
+    <!-- CSS para las Datatables -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
+
+
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!----css3---->
@@ -48,7 +54,7 @@
                 </li>
 
                 <li class="">
-                    <a href="" class="dashboard">
+                    <a href="{{ route('user.index') }}" class="dashboard">
                       <i class="material-icons">group</i>Usuarios
                     </a>
                 </li>
@@ -137,7 +143,23 @@
 
     <script src="{{ asset('js/dashboard.js') }}"></script>
 
-    @yield('js')
+
+    <!-- Datatables JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#user').DataTable();
+        });
+    </script>
+
+
+
 
 
 </body>

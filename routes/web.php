@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,11 @@ Route::group(['middleware' => 'prevent-back-history-middleware'], function () {
         Route::get('/dashboard', function () {
             return view('rules.layout.pageHome');
         })->name('dashboard');
+
+        // Rutas para el usuario
+        Route::prefix('/user')->group(function () {
+            Route::get('/userIndex' , [UserController::class, 'index'])->name('user.index');
+        });
 
 
     });
