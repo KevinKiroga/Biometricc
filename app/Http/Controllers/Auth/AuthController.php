@@ -7,10 +7,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use Mail;
-use Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use GuzzleHttp\Client;
 
@@ -60,24 +60,7 @@ class AuthController extends Controller
             'password_confirmation' => 'required|same:password'
         ]);
 
-        // Verificar existencia del correo electrónico utilizando la API
-        $email = $request->email;
 
-        $client = new Client();
-
-        $response = $client->get('https://api.zerobounce.net/v2/validate', [
-            'query' => [
-                'api_key' => 'fbf8f2610a374b90929b8d5a41f2969b',
-                'email' => $email,
-            ],
-        ]);
-
-        $result = json_decode($response->getBody(), true);
-
-        if (!isset($result['status']) || $result['status'] !== 'valid') {
-            // El correo electrónico no es válido o no existe
-            return redirect()->back()->withErrors(['email' => 'El correo electrónico no es válido o ya está registrado']);
-        }
 
         // El correo electrónico es válido, continuar con el proceso de registro
         User::create([
@@ -85,7 +68,7 @@ class AuthController extends Controller
             'typeDocument' => $request->typeDocument,
             'document' => $request->document,
             'phone' => $request->phone,
-            'email' => $email,
+            'email' => $request -> email,
             'password' => bcrypt($request->password)
         ]);
 

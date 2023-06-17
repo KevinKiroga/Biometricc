@@ -35,6 +35,37 @@
 
 <body>
 
+    <style>
+        #user {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #user thead {
+            background-color: #f5f5f5;
+        }
+
+        #user th, #user td {
+            padding: 8px;
+        }
+
+        #user th {
+            text-align: left;
+        }
+
+        #user tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #user tbody tr:hover {
+            background-color: #ebebeb;
+        }
+
+        #user tbody td {
+            vertical-align: middle;
+        }
+
+        </style>
 
 
     <div class="wrapper">
