@@ -1,4 +1,4 @@
-@extends('dashboard.template.dashboard')
+@extends('rules.layout.dashboard')
 @section('title' , 'Roles')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
 <h2 class="text-center mt-5">Listado de roles</h2>
 
 <div class="text-center mt-5">
-    <a href="{{ route('roleCreate') }}" class="btn btn-success">Crear Rol</a>
+    <a href="{{ route('roles.create') }}" class="btn btn-success">Crear Rol</a>
 </div>
 
 <div class="mx-auto" style="width: 80%; margin-top: 20px;">
@@ -28,11 +28,11 @@
         @foreach($roles as $role)
             <tr>
                 <td>{{ $role->id }}</td>
-                <td>{{ $role->name }}</td>
+                <td>{{ $role->nameRol }}</td>
                 <td>{{ $role->created_at }}</td>
                 <td>
-                    <a href="{{ route('roleEdit', ['id' => $role->id]) }}" class="btn btn-primary">Editar</a>
-                    <a href="{{ route('roleDelete', ['id' => $role->id]) }}" class="btn btn-danger">Eliminar</a>
+                    <a href="{{ route('roles.edit', ['id' => $role->id]) }}" class="btn btn-primary">Editar</a>
+                    <a href="{{ route('roles.destroy', ['id' => $role->id]) }}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
         @endforeach

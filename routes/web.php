@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,14 @@ Route::group(['middleware' => 'prevent-back-history-middleware'], function () {
             Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
         });
 
-
+        Route::prefix('/role')->group(function () {
+            Route::get('/index', [RolesController::class, 'index'])->name('roles.index');
+            Route::get('/create', [RolesController::class, 'create'])->name('roles.create');
+            Route::post('/store', [RolesController::class, 'store'])->name('roles.store');
+            Route::get('/edit/{id}', [RolesController::class, 'edit'])->name('roles.edit');
+            Route::put('/update/{id}', [RolesController::class, 'update'])->name('roles.update');
+            Route::delete('/delete/{id}', [RolesController::class, 'destroy'])->name('roles.destroy');
+        });
 
     });
 });

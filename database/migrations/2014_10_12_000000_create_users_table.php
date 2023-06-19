@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('typeDocument', ['TI', 'CC', 'CE']);
             $table->integer('document');
             $table->bigInteger('phone')->unsigned();
-            $table->enum('status', ['ATIVO', 'INATIVO'])->default('ATIVO');
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

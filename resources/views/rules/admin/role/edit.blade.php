@@ -1,4 +1,4 @@
-@extends('dashboard.template.dashboard')
+@extends('rules.layout.dashboard')
 
 @section('content')
 <div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
@@ -8,7 +8,7 @@
                 <h2 class="text-center">Editar Rol</h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('roleUpdate', ['id' => $role->id]) }}" method="POST">
+                <form action="{{ route('roles.update', ['id' => $role->id]) }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre:</label>

@@ -1,4 +1,6 @@
-@extends('dashboard.template.dashboard')
+@extends('rules.layout.dashboard')
+
+@section('title', 'Crear Roles')
 
 @section('content')
 <div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
@@ -8,14 +10,14 @@
                 <h2 class="text-center">Crear nuevo rol</h2>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('roleStore') }}">
+                <form method="POST" action="{{ route('roles.store') }}">  
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        <input type="text" class="form-control" name="nombreRol" id="nombreRol" required>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success">Crear</button>
+                        <a><button type="submit" class="btn btn-success" name="submit" href="{{ route('roles.index') }}">Crear</button></a>
                     </div>
                 </form>
             </div>
