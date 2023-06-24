@@ -11,7 +11,7 @@ class FichaController extends Controller
 {
     public function index()
     {
-        // Obtiene todas las fichas con sus respectivos programas de formación
+        // Obtiene todas las fichas con sus respectivos programas de formación ....
         $fichas = Ficha::with('programa')->get();
         
         return view('home.admin.ficha.index', compact('fichas'));
