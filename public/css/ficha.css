@@ -1,0 +1,19 @@
+.icon-container{
+    position: fixed;
+    left: 50%;
+    top: 10%;
+}
+
+.green-icon {
+    color: green;
+}
+
+.titulo_ficha{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #303030;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: 3px solid green;
+}

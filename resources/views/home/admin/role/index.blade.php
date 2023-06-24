@@ -4,7 +4,7 @@
 
 @section('content')
 
-
+<h2 class="titulo_ficha">Listado de Roles</h2>
 @if (session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <small>
@@ -15,9 +15,9 @@
     </button>
 </div>
 @endif
-
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <a href="{{ route('role.create') }}" class="btn btn-success">Crear Rol</a>
+    <a href="{{ route('role.create') }}" class="btn btn-success boton">Crear Rol</a>
+    <div class="container">
+        
 
         <table id="roles" class="table table-striped table-bordered justify-content-center align-items-center"
             style="width:100%;">

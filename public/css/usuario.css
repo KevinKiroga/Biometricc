@@ -1,0 +1,13 @@
+.boton {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+
+.form{
+    border: 4px solid green;
+    border-radius: 20px;
+    padding: 20px;
+    background: whitesmoke;
+}

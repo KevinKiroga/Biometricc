@@ -3,6 +3,7 @@
 @section('title', 'Tabla de usuarios')
 
 @section('content')
+<h2 class="titulo_ficha">Listado de Usuarios</h2>
 
 @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -14,9 +15,9 @@
                 </button>
             </div>
         @endif
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 
-        <a href="{{ route('users.create') }}" class="btn btn-success">Crear Usuario</a>
+    <a href="{{ route('users.create') }}" class="btn btn-success boton">Crear Usuario</a>
+    <div class="d-flex justify-content-center">
 
         <table id="user" class="table table-striped table-bordered justify-content-center align-items-center" style="width: 100vh">
             <thead>

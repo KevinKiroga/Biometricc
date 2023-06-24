@@ -6,7 +6,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh">
-            <div class="col-lg-6">
+            <div class="col-lg-6 form">
                 <h2 class="mb-4">Editar Usuario</h2>
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">

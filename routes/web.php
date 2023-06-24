@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\FichaController;
+use App\Http\Controllers\Admin\ProgramaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,18 @@ Route::group(['middleware' => 'prevent-back-history-middleware'], function () {
         Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
 
         Route::get('ficha', [FichaController::class, 'index'])->name('ficha.index');
+        Route::get('ficha/create', [FichaController::class, 'create'])->name('ficha.create');
+        Route::post('ficha', [FichaController::class, 'store'])->name('ficha.store');
+        Route::get('ficha/{ficha}/edit', [FichaController::class, 'edit'])->name('ficha.edit');
+        Route::put('ficha/update', [FichaController::class, 'update'])->name('ficha.update');
+        Route::delete('ficha/{ficha}', [FichaController::class, 'destroy'])->name('ficha.destroy');
+
+        Route::get('programa', [ProgramaController::class, 'index'])->name('programa.index');
+        Route::get('programa/create', [ProgramaController::class, 'create'])->name('programa.create');
+        Route::post('programa', [ProgramaController::class, 'store'])->name('programa.store');
+        Route::get('programa/{programa}/edit', [ProgramaController::class, 'edit'])->name('programa.edit');
+        Route::put('programa/{programa}', [ProgramaController::class, 'update'])->name('programa.update');
+        Route::delete('programa/{programa}', [ProgramaController::class, 'destroy'])->name('programa.destroy');
 
 
 

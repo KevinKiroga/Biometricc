@@ -3,65 +3,81 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Ficha;
+use App\Models\Programa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class FichaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
-        return view('home.admin.ficha.index');
+        // Obtiene todas las fichas con sus respectivos programas de formación
+        $fichas = Ficha::with('programa')->get();
+        
+        return view('home.admin.ficha.index', compact('fichas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $programas = Programa::all(); // Obtener todos los programas de formación disponibles
+    
+        return view('home.admin.ficha.create', compact('programas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'number_ficha' => 'required',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date',
+            'programa_id' => 'required',
+        ]);
+    
+        $ficha = new Ficha();
+        $ficha->number_ficha = $request->input('number_ficha');
+        $ficha->date_start = $request->input('date_start');
+        $ficha->date_end = $request->input('date_end');
+        $ficha->programa_id = $request->input('programa_id');
+        $ficha->save();
+    
+        return redirect()->route('ficha.index')->with('success', 'Ficha creada exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ficha $ficha)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Ficha $ficha)
     {
-        //
+        $programas = Programa::all();
+        return view('home.admin.ficha.edit', compact('ficha', 'programas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Ficha $ficha)
+    
+    public function update(Request $request)
     {
-        //
+        $ficha = Ficha::find($request->input('id_ficha'));
+    
+        if (!$ficha) {
+            return redirect()->route('ficha.index')->with('error', 'Ficha no encontrada');
+        }
+    
+        $request->validate([
+            'number_ficha' => 'required',
+            'date_start' => 'required|date',
+            'date_end' => 'required|date',
+            'programa_id' => 'required',
+        ]);
+    
+        $ficha->number_ficha = $request->input('number_ficha');
+        $ficha->date_start = $request->input('date_start');
+        $ficha->date_end = $request->input('date_end');
+        $ficha->programa_id = $request->input('programa_id');
+        $ficha->save();
+    
+        return redirect()->route('ficha.index')->with('success', 'Ficha actualizada exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Ficha $ficha)
     {
-        //
+        $ficha->delete();
+
+        return redirect()->route('ficha.index')->with('success', 'Ficha eliminada exitosamente.');
     }
 }
